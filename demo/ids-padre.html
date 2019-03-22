@@ -1,0 +1,57 @@
+<link rel="import" href="../../polymer/polymer-element.html">
+<link rel="import" href="../ids-input.html">
+<dom-module id="ids-inputpadre">
+  <template>
+    <style>
+      :host {
+        display: block;
+        border: 3px solid green;
+        padding: 20px;
+      }
+
+      ids-input-db {
+        padding: 20px;
+        border: 3px solid blue;
+      }
+    </style>
+    [[varnombre]]
+    <ids-input id="nombre"value="{{varnombre}}"></ids-input>
+     <ids-input id="nombre"value="{{varemail}}"></ids-input>
+     <ids-input id="nombre"value="{{vartelefono}}"></ids-input>
+     <ids-input id="nombre"value="{{varemailtrabajo}}"></ids-input>
+  </template>
+  <script>
+    /**
+     * `ids-padre`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class InputPadre  extends Polymer.Element {
+      static get is() { return 'ids-inputpadre'; }
+      static get properties() {
+        return {
+          varnombre: String,
+          varemail: String,
+          vartelefono: String,
+          varemailtrabajo: {
+            type: String
+          }
+        }
+      }
+
+      ready () {
+        super.ready();
+        this.$.nombre.addEventListener('value-changed', this.valueHandler);
+      }
+
+      valueHandler (e) {
+        console.log(e);
+      }
+    }
+
+    window.customElements.define(InputPadre.is, InputPadre);
+  </script>
+</dom-module>
